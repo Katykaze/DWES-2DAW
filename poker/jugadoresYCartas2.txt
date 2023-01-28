@@ -1,0 +1,17 @@
+Nombre###Carta1###Carta2###Carta3###Carta4###Puntuacion
+
+katherine###1T2.PNG###JD1.PNG###KC1.PNG###QC1.PNG###4
+
+catalina###JT1.PNG###JP1.PNG###QD2.PNG###1D.PNG###4
+
+daniel###QP1.PNG###1D2.PNG###JC2.PNG###KP2.PNG###4
+
+roberto###KT2.PNG###1C1.PNG###JP2.PNG###JD2.PNG###4
+
+angelica###1T1.PNG###KP1.PNG###1P2.PNG###QD1.PNG###4
+
+marcos###QP2.PNG###KD2.PNG###KC2.PNG###KD1.PNG###4
+
+ana###1P1.PNG###JC1.PNG###QC2.PNG###1C2.PNG###4
+
+fernando###QT2.PNG###KT1.PNG###QT1.PNG###JT2.PNG###4
