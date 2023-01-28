@@ -1,0 +1,66 @@
+1)Primero realizamos la creacion de una sesion :
+            session_start();
+            $_SESSION['DNI'] = $result;
+            $_SESSION['userName'] = $user;
+2)En los archivos donde el usuario sea necesario que esté loggeado es necesario realizar sesion_start()
+- en index_cliente,compro,consulta de compras
+
+3)Mas tarde en compra y consulta de compra es necesario comprobar que esta loggeado y controlarlo. Así
+si no lo está, nos redigirá a la página de inciar sesión obligatoriamente
+if (!isUserLogged()) {
+    echo "<script>location.href='comlogincli.php';</script>";
+}
+----> funcion isUserLogged() --> nos dice si esta logeado true, si no es false
+function isUserLogged()
+{
+    session_start();
+    if (isset($_SESSION['DNI'])) {
+        return true;
+    } else {
+        return false;
+    }
+
+}
+4)Creamos el carrito de la compra, sumándolo en la sesion. Lo he creado nada mas logearse.
+Aqui no es necesario serializar , simplemente le mtemos un array vacio
+            if(!isset($_SESSION['cart'])){
+                //creamos el carrito de la compra dentro de la sesion, con key llamada cart
+                $_SESSION['cart'] = array();
+            }
+5) Una vez estamos en la página de compra y queremos ir añadiendo cosas al carrito
+    $basket=$_SESSION['cart']; --> CREAMOS PRIMERO EL CARRITO
+    if (isset($_POST["carrito"])) {
+        //comprobamos si en el carrito existe ya el producto, su id es  la key del array asociativo
+        //si es asi se suma la cantidad
+        //si no se mete el producto nuevo añadido
+        if(array_key_exists($product, $basket)){
+            $basket[$product] += intval($quantity);
+            echo 'Producto añadido al carrito';
+        }else{
+            $basket[$product]=$quantity;
+        }
+        $_SESSION['cart'] = $basket;
+        echo '<pre>'; var_dump($basket); echo '</pre>';
+    }
+
+6) Creamos las funcion para cerrar sesion
+function cerrarSesion(){
+
+
+// Unset all of the session variables.
+
+// Unset all of the session variables.
+    $_SESSION = array();
+
+// If it's desired to kill the session, also delete the session cookie.
+// Note: This will destroy the session, and not just the session data!
+    if (ini_get("session.use_cookies")) {
+        $params = session_get_cookie_params();
+        setcookie(session_name(), '', time() - 42000,
+            $params["path"], $params["domain"],
+            $params["secure"], $params["httponly"]
+        );
+    }
+// Finally, destroy the session.
+    session_destroy();
+}
