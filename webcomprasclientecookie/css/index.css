@@ -1,0 +1,19 @@
+h1 {
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+a {
+    font-size: 140%;
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: red;
+}
+.container{
+    display: flex;  
+    justify-content: center;
+    align-items: center;  
+}
